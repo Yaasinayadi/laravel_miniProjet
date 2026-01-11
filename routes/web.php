@@ -1,18 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// On importe les Contrôleurs ici pour que ce soit plus propre
+use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\ReservationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,3 +15,22 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+// === GESTION DU MATERIEL (MEMBRE 2) ===
+// Route sécurisée Admin
+Route::middleware(['auth', 'role:admin'])->group(function() {
+
+    Route::get('/resources', [ResourceController::class, 'index'])->name('resources.index');
+    Route::get('/resources/create', [ResourceController::class, 'create'])->name('resources.create');
+
+    // CORRECTION ICI : Le crochet ] se met APRES 'store'
+    Route::post('/resources', [ResourceController::class, 'store'])->name('resources.store');
+
+});
+
+// === SYSTEME DE RESERVATION (MEMBRE 3) ===
+Route::middleware(['auth'])->group(function(){
+
+    Route::get('/reserve/{resource_id}', [ReservationController::class, 'create'])->name('reservations.create');
+    Route::post('/reserve', [ReservationController::class, 'store'])->name('reservations.store');
+
+});

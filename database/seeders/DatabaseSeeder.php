@@ -33,5 +33,20 @@ class DatabaseSeeder extends Seeder
             'service' => 'Informatique',
             'is_active' => true,
         ]);
+
+        \App\Models\Category::create([
+            'name' => 'Serveurs',
+            'icon' => 'server'
+        ]);
+
+        \App\Models\Category::create([
+            'name' => 'Ordinateurs Portables',
+            'icon' => 'labtop'
+        ]);
+
+        \App\Models\Category::create([
+            'name' => 'Switchs Reseau',
+            'icon' => 'network-wired'
+        ]);
     }
 }

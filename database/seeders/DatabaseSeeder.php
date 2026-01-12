@@ -33,6 +33,14 @@ class DatabaseSeeder extends Seeder
             'service' => 'Informatique',
             'is_active' => true,
         ]);
+        \App\Models\User::create([
+            'name' => 'user',
+            'email' => 'user@gmail.com',
+            'password' => bcrypt('12345678'),
+            'role' => 'membre',
+            'service' => 'Informatique',
+            'is_active' => true,
+        ]);
 
         $catServeurs = \App\Models\Category::create([
             'name' => 'Serveurs',

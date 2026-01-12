@@ -47,7 +47,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Envoyer la demande</button>
-        <a href="{{ url('/resources') }}" class="btn" style="color: grey;">Annuler</a>
+        <a href="{{ route('dashboard') }}" class="btn" style="color: grey;">Annuler</a>
     </form>
 </div>
 @endsection

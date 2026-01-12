@@ -29,7 +29,7 @@
                     </span>
                 </td>
                 <td>
-                    <button class="btn btn-primary" style="font-size: 12px;">Modifier</button>
+                    <a href="{{ route('resources.edit', $resource->id) }}" class="btn btn-primary" style="font-size: 12px;">Modifier</a>
                     <a href="{{route('reservations.create', $resource->id)}}" class="btn btn-success" style="font-size: 12px;margin-left: 5px;">Reserver</a>
                 </td>
             </tr>

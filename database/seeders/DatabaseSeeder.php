@@ -34,19 +34,60 @@ class DatabaseSeeder extends Seeder
             'is_active' => true,
         ]);
 
-        \App\Models\Category::create([
+        $catServeurs = \App\Models\Category::create([
             'name' => 'Serveurs',
             'icon' => 'server'
         ]);
 
-        \App\Models\Category::create([
+        $catLaptops = \App\Models\Category::create([
             'name' => 'Ordinateurs Portables',
-            'icon' => 'labtop'
+            'icon' => 'laptop'
         ]);
 
-        \App\Models\Category::create([
+        $catSwitchs = \App\Models\Category::create([
             'name' => 'Switchs Reseau',
             'icon' => 'network-wired'
+        ]);
+
+        // 4. Créer des ressources de test (RESTORED)
+        \App\Models\Resource::create([
+            'name' => 'Serveur Dell PowerEdge R740',
+            'category_id' => $catServeurs->id,
+            'description' => 'Serveur haute performance pour virtualisation.',
+            'specs' => 'RAM: 64GB, CPU: Dual Xeon, HDD: 4TB',
+            'state' => 'active'
+        ]);
+
+        \App\Models\Resource::create([
+            'name' => 'Serveur HP ProLiant DL380',
+            'category_id' => $catServeurs->id,
+            'description' => 'Serveur de stockage de données.',
+            'specs' => 'RAM: 32GB, CPU: Xeon Gold, SSD: 2TB',
+            'state' => 'active'
+        ]);
+
+        \App\Models\Resource::create([
+            'name' => 'MacBook Pro M2',
+            'category_id' => $catLaptops->id,
+            'description' => 'Ordinateur portable pour développement.',
+            'specs' => 'RAM: 16GB, Chip: M2, SSD: 512GB',
+            'state' => 'active'
+        ]);
+
+        \App\Models\Resource::create([
+            'name' => 'Lenovo ThinkPad X1',
+            'category_id' => $catLaptops->id,
+            'description' => 'Ultrabook professionnel.',
+            'specs' => 'RAM: 16GB, CPU: i7, SSD: 1TB',
+            'state' => 'active'
+        ]);
+
+        \App\Models\Resource::create([
+            'name' => 'Cisco Switch Catalyst 9200',
+            'category_id' => $catSwitchs->id,
+            'description' => 'Switch administrable 24 ports.',
+            'specs' => 'Ports: 24x 1Gbps, PoE+',
+            'state' => 'active'
         ]);
     }
 }

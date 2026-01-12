@@ -58,4 +58,16 @@ class ReservationController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Votre demande est envoyée ! Attendez la validation.');
     }
+
+    // 3. Validation par l'ADMIN
+    public function validateReservation($id)
+    {
+        $reservation = Reservation::findOrFail($id);
+        
+        // On change le statut
+        $reservation->status = 'confirmed'; // "confirmed" = officiellement réservé
+        $reservation->save();
+
+        return redirect()->back()->with('success', 'Réservation validée avec succès !');
+    }
 }

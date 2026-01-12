@@ -68,6 +68,15 @@ class ResourceController extends Controller
         ]);
 
         return redirect()->route('resources.index')->with('succes', 'Matériel modifié avec succès !');
+        return redirect()->route('resources.index')->with('succes', 'Matériel modifié avec succès !');
+    }
+
+    // 6. Suppression
+    public function destroy($id) {
+        $resource = Resource::findOrFail($id);
+        $resource->delete();
+
+        return redirect()->route('resources.index')->with('succes', 'Matériel supprimé avec succès.');
     }
 
 }

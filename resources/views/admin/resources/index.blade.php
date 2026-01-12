@@ -30,7 +30,12 @@
                 </td>
                 <td>
                     <a href="{{ route('resources.edit', $resource->id) }}" class="btn btn-primary" style="font-size: 12px;">Modifier</a>
-                    <a href="{{route('reservations.create', $resource->id)}}" class="btn btn-success" style="font-size: 12px;margin-left: 5px;">Reserver</a>
+                    
+                    <form action="{{ route('resources.destroy', $resource->id) }}" method="POST" style="display:inline-block;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" style="font-size: 12px; margin-left: 5px;" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')">Supprimer</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

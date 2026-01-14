@@ -5,6 +5,10 @@ body {
     color: #1f2937; 
     margin:0; 
 }
+body::selection {
+    background-color: black;
+    color: white;
+}
 .logo {
 fill: white;
 }

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Ajouter un nouvel équipement</h1>
+<h1 class="rass">Ajouter un nouvel équipement</h1>
 
-<div class="card" style="max-width: 600px;">
+<div class="card anoInp" style="max-width: 600px;">
     <form action="{{ route('resources.store') }}" method="POST">
         @csrf <!-- Sécurité obligatoire -->
 
@@ -31,8 +31,10 @@
             <textarea name="specs" placeholder="Ex: CPU i7, 32GB RAM..." rows="2"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Enregistrer le matériel</button>
-        <a href="{{ route('resources.index') }}" class="btn btn-danger">Annuler</a>
+        <div class="level">
+            <button type="submit" class="btn btn-primary" style="padding: 0px 50px;">Enregistrer le matériel</button>
+            <a href="{{ route('resources.index') }}" class="btn btn-danger" style="padding: 2px 100px;">Annuler</a>
+        </div>
     </form>
 </div>
 @endsection

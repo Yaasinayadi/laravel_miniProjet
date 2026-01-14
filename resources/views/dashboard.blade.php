@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <h2>Dernières demandes de réservation</h2>
+    <h2 class="rass">Dernières demandes de réservation</h2>
     <div class="card">
         @if($pendingReservations->isEmpty())
             <p>Aucune demande en attente.</p>
@@ -53,7 +53,7 @@
                                 <form action="{{ route('reservations.reject', $resa->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
-                                    <button type="submit" class="btn btn-danger" style="font-size: 0.8rem; background-color: #ef4444; color: white; border:none;">Refuser</button>
+                                    <button type="submit" class="btn btn-danger" style="padding: 6px 12px; font-size: 0.8rem; background-color: #ef4444; color: white; border:none;">Refuser</button>
                                 </form>
                             </div>
                         </td>
@@ -66,7 +66,7 @@
 @else
 <!-- VUE ETUDIANT / UTILISATEUR -->
 
-    <h2><i class="ri-calendar-check-line" style="vertical-align: middle;"></i> Mes Réservations</h2>
+    <h2 class="rass"><i class="ri-calendar-check-line" style="vertical-align: middle;"></i> Mes Réservations</h2>
     <div class="card">
         @if($myReservations->isEmpty())
             <p>Vous n'avez aucune réservation.</p>
@@ -95,7 +95,7 @@
         @endif
     </div>
 
-    <h2><i class="ri-macbook-line" style="vertical-align: middle;"></i> Catalogue Matériel (Réserver)</h2>
+    <h2 class="rass"><i class="ri-macbook-line" style="vertical-align: middle;"></i> Catalogue Matériel (Réserver)</h2>
     <div class="card">
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
             @foreach($resources as $resource)

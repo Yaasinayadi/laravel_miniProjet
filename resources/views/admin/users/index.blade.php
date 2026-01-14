@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Gestion des Utilisateurs</h1>
+<h1 class="rass">Gestion des Utilisateurs</h1>
 
 <div class="card">
     <table>
@@ -21,7 +21,7 @@
                     <td>{{$user->email}}</td>
                     <td>{{$user->service ?? '-'}}</td>
                     <td>
-                        <span class="status-badge" style="color: {{ $user->role == 'invite' ? 'grey' : 'blue' }};">
+                        <span class="status-badge" style="color: {{ $user->role == 'invite' ? 'grey' : 'rgba(36, 103, 142, 1)' }};">
                         {{ $user->role }}
                         </span>
                     </td>

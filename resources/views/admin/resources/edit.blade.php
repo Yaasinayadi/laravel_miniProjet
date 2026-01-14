@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Modifier l'équipement : {{ $resource->name }}</h1>
+<h1 class="rass">Modifier l'équipement : {{ $resource->name }}</h1>
 
-<div class="card" style="max-width: 600px;">
+<div class="card anoInp" style="max-width: 600px;">
     <form action="{{ route('resources.update', $resource->id) }}" method="POST">
         @csrf 
         @method('PUT')
@@ -34,8 +34,10 @@
             <textarea name="specs" rows="2">{{ old('specs', $resource->specs) }}</textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
-        <a href="{{ route('resources.index') }}" class="btn btn-danger">Annuler</a>
+        <div class="level">
+            <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+            <a href="{{ route('resources.index') }}" class="btn btn-danger" style="padding: 3px 100px;">Annuler</a>
+        </div>
     </form>
 </div>
 @endsection

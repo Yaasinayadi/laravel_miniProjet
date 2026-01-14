@@ -1,12 +1,18 @@
 /* public/css/style.css */
 body { 
     font-family: 'Segoe UI', sans-serif; 
-    background: #f3f4f6; 
+    background: #2D333B; 
     color: #1f2937; 
     margin:0; 
 }
+.logo {
+fill: white;
+}
+.rass {
+    color: white;
+}
 .navbar { 
-    background: #2b62c9; 
+    background: #1C2128; 
     color: white; 
     padding: 1rem 2rem; 
     display: flex; 
@@ -14,6 +20,16 @@ body {
     align-items: center; 
     animation: none;
     transition: none;
+    position: relative;
+}
+.navbar::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(to right, rgb(41, 84, 149) 25%, rgb(71, 106, 159) 75%, rgb(41, 84, 149) 100% )
 }
 .navbar a, .navbar button { 
     color: white; 
@@ -51,11 +67,12 @@ body {
     animation: animePage 1s ease-out;
 }
 .card { 
-    background: white; 
+    background: #22272E;
     padding: 20px; 
     border-radius: 8px; 
     box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
     margin-bottom: 20px; 
+    color: #F0F6FC;
 }
 .btn { 
     padding: 8px 16px; 
@@ -69,26 +86,42 @@ body {
     color: white; 
     border-radius: 15px;
     border :none;
-    padding: 8px 15px;
+    padding: 6px 15px;
 }
-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-th, td { padding: 12px; border-bottom: 1px solid #e5e7eb; text-align: left; }
-th { background: #f9fafb; }
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 10px; 
+    box-sizing: border-box;
+}
+th, td { 
+    padding: 12px; 
+    border-bottom: 1px solid #e5e7eb; 
+    text-align: left; 
+    box-sizing: border-box;
+}
+th { background: #22272E; }
 .form-group { margin-bottom: 15px; }
-input, select, textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+input, select, textarea { 
+    width: 100%;
+    background-color: rgb(99, 98, 98); 
+    padding: 8px; 
+    border: 1px solid black; 
+    border-radius: 4px; 
+    box-sizing: border-box; }
 .btn-success { 
     background: #22c55d; 
     color: white; 
     border-radius: 15px;
     border :none;
-    padding: 8px 15px;
+    padding: 6px 12px
 }
 .btn-danger { 
     background: #ef4444; 
     color: white; 
     border-radius: 15px;
     border :none;
-    padding: 8px 15px;
+    padding: 6px 12px;
 }
 .btn:hover {
     transform: scale(1.05);
@@ -97,8 +130,10 @@ input, select, textarea { width: 100%; padding: 8px; border: 1px solid #ccc; bor
 .email input:focus,
 .mt-4 input:focus,
 .name input:focus{
-    border: 1px solid rgb(69, 119, 189);
+    border: 1px solid #ccc;
     outline: none;
+    caret-color: #ccc;
+    color: white;
 }
 .block .mt-4 input{
     transform: translate(-10%, -10%)
@@ -115,20 +150,24 @@ input, select, textarea { width: 100%; padding: 8px; border: 1px solid #ccc; bor
     padding: 5px;
     border-radius: 5px;
     outline: none;
-    border: 1px solid rgb(69, 119, 189);
+    border: 1px solid white;
     transition: all 0.8s ease-in-out;
-    color: white;
-    background: #4f46e5;
+    color: black;
+    background: gray;
     letter-spacing: 2px;
     margin-top: 15px;
+    font-weight: bold;
 }
 .ml-3:hover,
-.ml-4:hover {
-    background: #4f46e5;
+.ml-4:hover,
+.btn-primary:hover,
+.btn-success:hover,
+.btn-danger:hover {
+    background: #22272E;
     cursor: pointer;
-    transform: scale(1.03);
-    color: gold;
-    
+    transform: scale(1.02);
+    color: white;
+    border: 1px solid white;
 }
 @keyframes animePage {
     0% {
@@ -140,6 +179,25 @@ input, select, textarea { width: 100%; padding: 8px; border: 1px solid #ccc; bor
 }
 .rajae {
     transform: translateY(-5%)
+}
+.mt-4 a {
+    color: white;
+}
+.level {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+.anoInp input,
+.anoInp select,
+.anoInp textarea {
+    color: white;
+}
+input::placeholder,
+select::placeholder,
+textarea::placeholder {
+    color: white;
+    opacity: 0.7;
 }
 
 

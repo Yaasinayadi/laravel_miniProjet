@@ -2,7 +2,7 @@
 
 @section('content')
 <div style="display: flex; justify-content: space-between; align-items: center;">
-    <h1>Gestion du Matériel</h1>
+    <h1 class="rass">Gestion du Matériel</h1>
     <a href="{{ route('resources.create') }}" class="btn btn-primary">Ajouter un équipement</a>
 </div>
 

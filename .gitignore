@@ -13,3 +13,5 @@ yarn-error.log
 /.idea
 /.vscode
 *.odt
+*.txt
+rapport_manquants.md

@@ -27,12 +27,16 @@
                     </td>
                     <td>
                         {{-- Si c'est inviter bouton pour le valider --}}
-                        @if($user->role === 'invite')
-                            <form action="{{route('users.promote', $user->id)}}" method="POST" style="display:inline;">
-                                @csrf
-                                <button class="btn btn-success" style="padding: 5px 10px; font-size:12px;">Valider</button>
-                            </form>
-                        @endif
+                        {{-- Formulaire de changement de rôle (Remplacer le bouton Valider simple) --}}
+                        <form action="{{route('users.promote', $user->id)}}" method="POST" style="display:inline-flex; gap: 5px; align-items: center;">
+                            @csrf
+                            <select name="role" style="padding: 5px; border-radius: 5px; border: 1px solid #ccc;">
+                                <option value="interne" {{ $user->role == 'interne' ? 'selected' : '' }}>Interne</option>
+                                <option value="responsable" {{ $user->role == 'responsable' ? 'selected' : '' }}>Responsable</option>
+                                <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
+                            </select>
+                            <button class="btn btn-success" style="padding: 5px 10px; font-size:12px;">OK</button>
+                        </form>
                            {{-- si ce n'est pas (admin), bouton banner --}}
 
                         @if(Auth::id() !== $user->id)

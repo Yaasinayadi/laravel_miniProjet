@@ -26,6 +26,13 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
+            <!-- Service (Département) -->
+            <div class="mt-4">
+                <x-label for="service" :value="__('Service / Département')" />
+
+                <x-input id="service" class="block mt-1 w-full" type="text" name="service" :value="old('service')" required placeholder="Ex: Informatique, Mathématiques..." />
+            </div>
+
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />

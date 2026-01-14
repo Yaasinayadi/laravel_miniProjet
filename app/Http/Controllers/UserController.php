@@ -15,13 +15,22 @@ class UserController extends Controller
     }
 
     //change role(valider un utilisateur)
-    public function promote($id)
+    //change role(valider un utilisateur ou changer son grade)
+    public function promote(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        $user->role = 'interne'; //valide comme utilisateur interne
-        $user->save();
+        
+        // Si la requête contient un rôle, on l'utilise, sinon 'interne' par défaut
+        $targetRole = $request->input('role', 'interne');
+        
+        // Sécurité : On s'assure que le rôle est valide
+        if(in_array($targetRole, ['interne', 'responsable', 'admin', 'invite'])) {
+            $user->role = $targetRole;
+            $user->save();
+            return back()->with('success', "Le rôle de l'utilisateur a été mis à jour en : $targetRole !");
+        }
 
-        return back()->with('success', "L'utilisateur a été validé !");
+        return back()->with('error', "Rôle invalide.");
     }
 
     //banne utilisateur (Desactiver)

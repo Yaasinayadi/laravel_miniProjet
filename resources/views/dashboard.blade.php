@@ -43,11 +43,19 @@
                             Au {{ \Carbon\Carbon::parse($resa->end_date)->format('d/m H:i') }}
                         </td>
                         <td>
-                            <form action="{{ route('reservations.validate', $resa->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <button type="submit" class="btn btn-primary" style="font-size: 0.8rem;">Valider</button>
-                            </form>
+                            <div style="display: flex; gap: 5px;">
+                                <form action="{{ route('reservations.validate', $resa->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-primary" style="font-size: 0.8rem;">Valider</button>
+                                </form>
+
+                                <form action="{{ route('reservations.reject', $resa->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-danger" style="font-size: 0.8rem; background-color: #ef4444; color: white; border:none;">Refuser</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                     @endforeach

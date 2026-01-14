@@ -42,6 +42,7 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     // Validation des réservations (Route PUT demandée)
     Route::put('/reservations/{id}/validate', [ReservationController::class, 'validateReservation'])->name('reservations.validate');
+    Route::put('/reservations/{id}/reject', [ReservationController::class, 'rejectReservation'])->name('reservations.reject');
 });
 
 // === SYSTEME DE RESERVATION (Membre 3) ===

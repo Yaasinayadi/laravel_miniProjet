@@ -38,19 +38,19 @@ class ReservationController extends Controller
 
         // On cherche s'il existe UNE réservation pour CETTE ressource
 
-        $conflit = Reservation::where('resource_id', $request->resource_id)
+        $existingReservation = Reservation::where('resource_id', $request->resource_id)
             ->where('status', '!=', 'rejected')
             ->where(function ($query) use ($request) {
-
-
                 $query->where('start_date', '<', $request->end_date)
                       ->where('end_date', '>', $request->start_date);
             })
-            ->exists(); // Renvoie VRAI si un conflit est trouvé
+            ->first();
 
-        // Si conflit, on arrête tout !
-        if ($conflit) {
-            return back()->with('error', 'Impossible ! Cette ressource est déjà réservée sur ce créneau.');
+        if ($existingReservation) {
+            $formattedStart = \Carbon\Carbon::parse($existingReservation->start_date)->format('d/m H:i');
+            $formattedEnd = \Carbon\Carbon::parse($existingReservation->end_date)->format('d/m H:i');
+            
+            return back()->with('error', "Impossible ! Cette ressource est déjà réservée du $formattedStart au $formattedEnd.");
         }
 
         // C. Tout est bon, on enregistre
@@ -76,5 +76,16 @@ class ReservationController extends Controller
         $reservation->save();
 
         return redirect()->back()->with('success', 'Réservation validée avec succès !');
+    }
+
+    // 4. Refus par l'ADMIN
+    public function rejectReservation($id)
+    {
+        $reservation = Reservation::findOrFail($id);
+
+        $reservation->status = 'rejected';
+        $reservation->save();
+
+        return redirect()->back()->with('success', 'Réservation refusée.');
     }
 }

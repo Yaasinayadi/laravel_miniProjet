@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Nouvelle Réservation</h1>
+<h1 class="rass">Nouvelle Réservation</h1>
 
 <div class="card" style="max-width: 600px; margin: 0 auto;">
-    <h2 style="color: #4f46e5;">Réserver : {{ $resource->name }}</h2>
+    <h2 style="color: white;">Réserver : {{ $resource->name }}</h2>
     <p>Catégorie : <strong>{{ $resource->category->name }}</strong></p>
 
     <!-- Affichage des erreurs (ex: Conflit de date) -->
@@ -25,7 +25,7 @@
         </div>
     @endif
     <!-- Fin AJOUT -->
-    <form action="{{ route('reservations.store') }}" method="POST">
+    <form action="{{ route('reservations.store') }}" method="POST" class="anoInp">
         @csrf
 
         <!-- On passe l'ID de la ressource en caché -->
@@ -45,9 +45,11 @@
             <label>Motif de la demande :</label>
             <textarea name="reason" placeholder="Pour quel projet ? Pourquoi ce matériel ?" rows="3" required></textarea>
         </div>
-
-        <button type="submit" class="btn btn-primary">Envoyer la demande</button>
-        <a href="{{ route('dashboard') }}" class="btn" style="color: grey;">Annuler</a>
+            
+        <div class="level">
+            <button type="submit" class="btn btn-primary" style="padding: 0px 50px">Envoyer la demande</button>
+            <a href="{{ route('dashboard') }}" class="btn btn-danger" style="padding: 3px 100px; color: white;">Annuler</a>
+        </div>
     </form>
 </div>
 @endsection

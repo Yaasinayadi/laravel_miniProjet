@@ -21,7 +21,7 @@
                     <td>{{$user->email}}</td>
                     <td>{{$user->service ?? '-'}}</td>
                     <td>
-                        <span class="status-badge" style="background: {{ $user->role == 'invite' ? 'grey' : 'blue' }};">
+                        <span class="status-badge" style="color: {{ $user->role == 'invite' ? 'grey' : 'blue' }};">
                         {{ $user->role }}
                         </span>
                     </td>
@@ -30,7 +30,7 @@
                         @if($user->role === 'invite')
                             <form action="{{route('users.promote', $user->id)}}" method="POST" style="display:inline;">
                                 @csrf
-                                <button class="btn btn-success" style="padding: 5px 10px; font-size:12px;">✅ Valider</button>
+                                <button class="btn btn-success" style="padding: 5px 10px; font-size:12px;">Valider</button>
                             </form>
                         @endif
                            {{-- si ce n'est pas (admin), bouton banner --}}
@@ -39,7 +39,7 @@
                             <form action="{{ route('users.ban', $user->id)}}" method="POST" style="display: inline">
                                 @csrf
                                 <button class="btn {{ $user->is_active ? 'btn-danger' : 'btn-success' }}" style="padding: 5px 10px; font-size:12px;">
-                                {{ $user->is_active ? '🚫 Bannir' : '👍 Réactiver' }}
+                                {{ $user->is_active ? 'Bannir' : 'Réactiver' }}
                                 </button>
                             </form>
                         @endif

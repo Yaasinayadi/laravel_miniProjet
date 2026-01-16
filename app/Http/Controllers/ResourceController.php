@@ -94,4 +94,8 @@ class ResourceController extends Controller
 
         return redirect()->back()->with('succes', 'État du ressource mis à jour.');
     }
+    public function show($id){
+        $resource = Resource::findOrFail($id);
+        return view('admin.resources.show', compact('resource'));
+    }
 }

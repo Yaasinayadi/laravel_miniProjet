@@ -144,9 +144,11 @@
                     </div>
                     
                     <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px;">
-                        {{-- Suppression du bouton Voir Détails comme demandé, on garde juste Réserver --}}
+                        <!-- Nouveau Bouton Voir Détails -->
+                        <a href="{{ route('resources.show', $resource->id) }}" class="btn btn-info" style="display: block; width: 100%; box-sizing: border-box; border-radius: 15px;text-align: center; background-color: #3b82f6; color: white; border: none;">Voir détails</a>
+
                         <a href="{{ route('reservations.create', $resource->id) }}" class="btn btn-success" style="display: block; width: 100%; box-sizing: border-box; text-align: center;">Réserver</a>
-                    </div>
+                    </div>                
                 </div>
             @endforeach
         </div>

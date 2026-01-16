@@ -50,4 +50,5 @@ Route::middleware(['auth'])->group(function () {
     // Création d'une demande
     Route::get('/reserve/{resource_id}', [ReservationController::class, 'create'])->name('reservations.create');
     Route::post('/reserve', [ReservationController::class, 'store'])->name('reservations.store');
+    Route::get('/resource/{id}', [ResourceController::class, 'show'])->name('resources.show');
 });

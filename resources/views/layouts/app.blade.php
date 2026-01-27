@@ -21,9 +21,13 @@
                 @endif
 
                 {{-- Menu reserve a l'admin for gestion users --}}
+
                 @if(Auth::user()->role === 'admin')
-                    <a href="{{route('users.index')}}"><i class="ri-group-line"></i> Gestion Utilisateurs</a>
+                    <a href="{{route('admin.users.index')}}"><i class="ri-group-line"></i> Gestion Utilisateurs</a>
+                    <a href="{{route('admin.registration-requests')}}"><i class="ri-file-list-3-line"></i> Demandes d'inscription</a>
                 @endif
+
+               
 
                 <!-- Bouton de déconnexion -->
                 <form method="POST" action="{{ route('logout') }}" style="display:inline;">

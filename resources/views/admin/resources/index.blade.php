@@ -27,7 +27,7 @@
             </select>
         </div>
         <div>
-            <button type="submit" class="btn btn-primary" style="padding: 8px 15px;">Filtrer</button>
+            <button type="submit" class="btn btn-primary" style="padding: 8px 25px; width:150px;margin-left: 10px;">Filtrer</button>
             @if(request()->filled('category_id') || request()->filled('state'))
                 <a href="{{ route('resources.index') }}" style="color: #ffffffff; text-decoration: underline;">Réinitialiser</a>
             @endif

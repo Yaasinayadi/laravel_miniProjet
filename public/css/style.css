@@ -207,9 +207,7 @@ textarea {
 
 .ml-3:hover,
 .ml-4:hover,
-.btn-primary:hover,
-.btn-success:hover,
-.btn-danger:hover {
+.btn:hover {
     background: #22272E;
     cursor: pointer;
     transform: scale(1.02);

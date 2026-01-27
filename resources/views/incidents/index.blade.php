@@ -3,7 +3,7 @@
 @section('content')
 
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
-        <h2 style="color: #374151; font-weight: bold; font-size: 1.5rem;">
+        <h2 style="color: white; font-weight: bold; font-size: 1.5rem;">
             <i class="ri-alarm-warning-line" style="margin-right: 10px;"></i>
             @if(Auth::user()->role === 'admin' || Auth::user()->role === 'responsable')
                 Gestion des Incidents
@@ -12,7 +12,7 @@
             @endif
         </h2>
         <a href="{{ route('incidents.create') }}" class="btn btn-primary"
-            style="padding: 10px 20px; border-radius: 20px; font-weight: bold; background-color: #6366f1; border:none;"> +
+            style="padding: 10px 20px; border-radius: 20px; font-weight: bold; border:none;"> +
             Signaler un incident</a>
     </div>
 
@@ -74,11 +74,6 @@
                                         <i class="ri-check-double-line"></i> Marquer comme résolu
                                     </button>
                                 </form>
-                            @else
-                                <button class="btn btn-primary"
-                                    style="background-color: #3b82f6; border: none; padding: 10px 20px; border-radius: 6px; opacity: 0.5; cursor: default;">
-                                    <i class="ri-eye-line"></i> Voir détails
-                                </button>
                             @endif
                         </div>
 

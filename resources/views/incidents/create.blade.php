@@ -4,7 +4,7 @@
     <div style="max-width: 800px; margin: 0 auto; padding-top: 20px;">
 
         <div style="text-align: center; margin-bottom: 30px;">
-            <h2 style="color: #374151; font-weight: bold; font-size: 1.5rem;"><i class="ri-alarm-warning-line"
+            <h2 style="color: white; font-weight: bold; font-size: 1.5rem;"><i class="ri-alarm-warning-line"
                     style="margin-right: 10px;"></i> Signaler un Incident</h2>
         </div>
 
@@ -74,10 +74,10 @@
                 <!-- Boutons -->
                 <div style="text-align: center; display: flex; gap: 15px; justify-content: center;">
                     <button type="submit" class="btn btn-primary"
-                        style="padding: 12px 30px; font-weight: bold; background-color: #6366f1; border: none; border-radius: 25px;">
+                        style="padding: 12px 30px; font-weight: bold;border: none; border-radius: 25px;">
                         <i class="ri-send-plane-fill"></i> Signaler l'incident</button>
                     <a href="{{ route('incidents.index') }}" class="btn"
-                        style="padding: 12px 30px; font-weight: bold; background-color: #6b7280; color: white; border-radius: 25px; text-decoration: none;">Annuler</a>
+                        style="padding: 12px 30px; font-weight: bold;color: white; border-radius: 25px; text-decoration: none;">Annuler</a>
                 </div>
 
             </form>

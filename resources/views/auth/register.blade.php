@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <x-application-logo class="fill-current text-gray-500" />
             </a>
         </x-slot>
 
@@ -30,7 +30,12 @@
             <div class="mt-4">
                 <x-label for="service" :value="__('Service / Département')" />
 
-                <x-input id="service" class="block mt-1 w-full" type="text" name="service" :value="old('service')" required placeholder="Ex: Informatique, Mathématiques..." />
+                <select id="service" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="service" required style="color: white; background-color: rgb(99, 98, 98);">
+                    <option value="" disabled selected style="color: white;">-- Sélectionner votre statut --</option>
+                    <option value="Ingénieur" {{ old('service') == 'Ingénieur' ? 'selected' : '' }} style="color: white;">Ingénieur</option>
+                    <option value="Enseignant" {{ old('service') == 'Enseignant' ? 'selected' : '' }} style="color: white;">Enseignant</option>
+                    <option value="Doctorant" {{ old('service') == 'Doctorant' ? 'selected' : '' }} style="color: white;">Doctorant</option>
+                </select>
             </div>
 
             <!-- Password -->

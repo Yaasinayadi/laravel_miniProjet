@@ -10,7 +10,7 @@
         <!-- Ton CSS -->
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
-    <body style="background-color: #f3f4f6; display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <body style="background-color: #2D333B; display: flex; justify-content: center; align-items: center; height: 100vh;">
 
         <div class="card" style="width: 100%; max-width: 400px; ">
             <div style="text-align: center; margin-bottom: 20px;">

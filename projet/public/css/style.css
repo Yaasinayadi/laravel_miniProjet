@@ -331,6 +331,7 @@ textarea::placeholder {
     transform: scale(1.01);
 }
 
+/* notification */
 
 .pagination-wrapper {
     display: flex;

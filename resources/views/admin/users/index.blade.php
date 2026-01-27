@@ -29,7 +29,7 @@
                         {{-- Si c'est inviter bouton pour le valider --}}
                         @if($user->email !== 'admin@gmail.com' && $user->email !== 'respo@gmail.com')
                         {{-- Formulaire de changement de rôle (Remplacer le bouton Valider simple) --}}
-                        <form action="{{route('users.promote', $user->id)}}" method="POST" style="display:inline-flex; gap: 5px; align-items: center;">
+                        <form action="{{route('admin.users.promote', $user->id)}}" method="POST" style="display:inline-flex; gap: 5px; align-items: center;">
                             @csrf
                             <select name="role" style="color: white;padding: 5px; border-radius: 5px; border: 1px solid #ccc;">
                                 <option value="interne" {{ $user->role == 'interne' ? 'selected' : '' }}>Interne</option>
@@ -42,7 +42,7 @@
                            {{-- si ce n'est pas (admin), bouton banner --}}
 
                         @if(Auth::id() !== $user->id)
-                            <form action="{{ route('users.ban', $user->id)}}" method="POST" style="display: inline">
+                            <form action="{{ route('admin.users.ban', $user->id)}}" method="POST" style="display: inline">
                                 @csrf
                                 <button class="btn {{ $user->is_active ? 'btn-danger' : 'btn-success' }}" style="padding: 5px 10px; font-size:12px;">
                                 {{ $user->is_active ? 'Bannir' : 'Réactiver' }}

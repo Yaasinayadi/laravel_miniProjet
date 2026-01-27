@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,9 +10,11 @@
     <!-- IMPORTANT : On lie notre CSS manuel -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
+
 <body>
     <nav class="navbar">
-        <a href="{{ url('/') }}" style="font-weight:bold; font-size:1.2rem;"><i class="ri-server-fill"></i> DC Manager</a>
+        <a href="{{ url('/') }}" style="font-weight:bold; font-size:1.2rem;"><i class="ri-server-fill"></i> DC
+            Manager</a>
         <div>
             @auth
                 <a href="{{ route('dashboard') }}"><i class="ri-dashboard-3-line"></i> Dashboard</a>
@@ -24,6 +27,9 @@
                 @if(Auth::user()->role === 'admin')
                     <a href="{{route('users.index')}}"><i class="ri-group-line"></i> Gestion Utilisateurs</a>
                 @endif
+
+                <!-- Incidents -->
+                <a href="{{ route('incidents.index') }}"><i class="ri-alarm-warning-line"></i> Mes Incidents</a>
 
                 <!-- Notifications -->
                 <a href="{{ route('notifications.index') }}" style="margin-right: 15px;">
@@ -59,4 +65,5 @@
         {{ $slot ?? '' }}
     </main>
 </body>
+
 </html>

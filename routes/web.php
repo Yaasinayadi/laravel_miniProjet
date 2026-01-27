@@ -3,16 +3,18 @@
 use Illuminate\Support\Facades\Route;
 
 // Import propre des contrôleurs
+// Import propre des contrôleurs
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\IncidentController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 // --- TABLEAU DE BORD ---
 Route::get('/dashboard', [DashboardController::class, 'index'])
@@ -20,7 +22,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
 
 // === ESPACE ADMIN (Membre 1 & 2) and responsable ===
-Route::middleware(['auth', 'role:admin,responsable'])->group(function() {
+Route::middleware(['auth', 'role:admin,responsable'])->group(function () {
 
     // Gestion Matériel
     Route::get('/resources', [ResourceController::class, 'index'])->name('resources.index');
@@ -46,7 +48,7 @@ Route::middleware(['auth', 'role:admin,responsable'])->group(function() {
 });
 
 // === ESPACE USER (Membre 3)  seul admin peut acceder a ca ===//
-Route::middleware(['auth', 'role:admin'])->group(function() {
+Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::post('/users/{id}/promote', [UserController::class, 'promote'])->name('users.promote');
     Route::post('/users/{id}/ban', [UserController::class, 'toggleBan'])->name('users.ban');
@@ -60,6 +62,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/reserve/{resource_id}', [ReservationController::class, 'create'])->name('reservations.create');
     Route::post('/reserve', [ReservationController::class, 'store'])->name('reservations.store');
     Route::get('/resource/{id}', [ResourceController::class, 'show'])->name('resources.show');
+
+    // Gestion des Incidents
+    Route::get('/incidents', [IncidentController::class, 'index'])->name('incidents.index');
+    Route::get('/incidents/create', [IncidentController::class, 'create'])->name('incidents.create');
+    Route::post('/incidents', [IncidentController::class, 'store'])->name('incidents.store');
+    Route::put('/incidents/{id}/resolve', [IncidentController::class, 'resolve'])->name('incidents.resolve');
     // Notifications
     Route::get('/notifications', [App\Http\Controllers\NotificationController::class, 'index'])->name('notifications.index');
     Route::post('/notifications/{id}/read', [App\Http\Controllers\NotificationController::class, 'markAsRead'])->name('notifications.read');

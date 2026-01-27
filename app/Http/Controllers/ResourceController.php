@@ -10,9 +10,21 @@ use Illuminate\Http\Request;
 class ResourceController extends Controller
 {
     //1.liste materiel pour l'admin
-    public function index() {
-        $resources = Resource::with('category')->get();
-        return view('admin.resources.index', compact('resources'));
+    public function index(Request $request) {
+        $query = Resource::with('category');
+
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->category_id);
+        }
+
+        if ($request->filled('state')) {
+            $query->where('state', $request->state);
+        }
+
+        $resources = $query->get();
+        $categories = Category::all();
+
+        return view('admin.resources.index', compact('resources', 'categories'));
     }
 
     //2.formulaire de creation

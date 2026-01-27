@@ -10,19 +10,54 @@ use App\Models\Reservation;
 
 class DashboardController extends Controller
 {
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         $user = Auth::user();
 
-        if($user->role === 'admin' || $user->role === 'responsable') {
+        if ($user->role === 'admin' || $user->role === 'responsable') {
             //voit toutes les demandes en attente
             $pendingReservations = Reservation::where('status', 'pending')->with(['user', 'resource'])->get();
+
+            // --- STATISTIQUES GLOBALES ---
+            $totalUsers = \App\Models\User::count();
+            $activeUsers = \App\Models\User::where('is_active', true)->count(); // Suppose 'is_active' boolean
+
+            $totalResources = Resource::count();
+            $inactiveResources = Resource::where('state', '!=', 'active')->count(); // Suppose 'state' column
+
+            $totalReservations = Reservation::count();
+            $weekReservations = Reservation::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->count();
+
+            // Taux d'occupation (Approuvées / Total)
+            $approvedReservationsCount = Reservation::where('status', 'confirmed')->count();
+            $occupancyRate = $totalReservations > 0 ? round(($approvedReservationsCount / $totalReservations) * 100) : 0;
+
+            // --- STATUS ---
+            $pendingCount = Reservation::where('status', 'pending')->count();
+            $approvedCount = $approvedReservationsCount;
+            $rejectedCount = Reservation::where('status', 'rejected')->count();
+
+            // --- TOP RESSOURCES ---
+            $topResources = Resource::withCount('reservations')
+                ->orderBy('reservations_count', 'desc')
+                ->take(3)
+                ->get();
+
             $stats = [
-                'total_users' => \App\Models\User::count(),
-                'total_resources' => Resource::count(),
+                'total_users' => $totalUsers,
+                'active_users' => $activeUsers,
+                'total_resources' => $totalResources,
+                'inactive_resources' => $inactiveResources,
+                'total_reservations' => $totalReservations,
+                'week_reservations' => $weekReservations,
+                'occupancy_rate' => $occupancyRate,
+                'pending_count' => $pendingCount,
+                'approved_count' => $approvedCount,
+                'rejected_count' => $rejectedCount,
             ];
-            return view('dashboard', compact('pendingReservations', 'stats'));
-        }
-        else {
+
+            return view('dashboard', compact('pendingReservations', 'stats', 'topResources'));
+        } else {
             //voir seulement catalogue + ses reservations
             $query = Resource::where('state', 'active');
 

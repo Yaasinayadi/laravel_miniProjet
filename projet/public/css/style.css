@@ -13,11 +13,12 @@ body::selection {
 
 .logo {
     fill: white;
-    
+
 }
 
 .rass {
     color: white;
+    text-align: center;
 }
 
 .navbar {
@@ -283,7 +284,7 @@ textarea::placeholder {
 
 /* Highlight target from notification */
 :target {
-    scroll-margin-top:250px;
+    scroll-margin-top: 250px;
     /* Leave space for navbar/top */
     animation: highlight 3s ease-out forwards;
     border: 2px solid #3b82f6;
@@ -322,4 +323,60 @@ textarea::placeholder {
 
     color: white;
     font-weight: bold;
+}
+
+.card ul li:hover {
+    background-color: #3b82f6;
+    color: white;
+    transform: scale(1.01);
+}
+
+
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    padding: 12px 0;
+}
+
+.pagination-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 20px;
+    border-radius: 8px;
+    background: #2d333b;
+    color: #c9d1d9;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #444c56;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.pagination-btn:hover {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+}
+
+.pagination-btn.disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #1c2128;
+    border-color: #30363d;
+    color: #6e7681;
+}
+
+.pagination-info {
+    color: #8b949e;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0 8px;
 }

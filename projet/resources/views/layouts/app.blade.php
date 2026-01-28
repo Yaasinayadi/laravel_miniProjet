@@ -32,8 +32,8 @@
                 <a href="{{ route('incidents.index') }}"><i class="ri-alarm-warning-line"></i> Mes Incidents</a>
 
                 <!-- Notifications -->
-                <a href="{{ route('notifications.index') }}" style="margin-right: 15px;">
-                    <i class="ri-notification-3-line" style="font-size: 1.2rem;"></i>
+                <a href="{{ route('notifications.index') }}" style="margin-left:0; ">
+                    <i class="ri-notification-3-line" style="padding-left:20px;font-size: 1.2rem;"></i>
                     @if(Auth::user()->unreadNotifications->count() > 0)
                         <span class="badge">{{ Auth::user()->unreadNotifications->count() }}</span>
                     @endif

@@ -18,7 +18,7 @@
                 @if($notifications->isEmpty())
                     <p>Aucune notification pour le moment.</p>
                 @else
-                    <ul style="list-style: none; padding: 0;">
+                    <ul  style="list-style: none; padding: 0;">
                         @foreach($notifications as $notification)
                             <li style="background: {{ $notification->read_at ? '#2d333b' : '#374151' }}; padding: 15px; margin-bottom: 10px; border-radius: 8px; border-left: 5px solid {{ $notification->read_at ? '#adb5bd' : '#3b82f6' }}; display: flex; justify-content: space-between; align-items: center;">
                                 <div>
@@ -48,7 +48,7 @@
                     </ul>
 
                     <div style="margin-top: 20px;">
-                        {{ $notifications->links() }}
+                        {{ $notifications->links('vendor.pagination.custom') }}
                     </div>
                 @endif
             </div>

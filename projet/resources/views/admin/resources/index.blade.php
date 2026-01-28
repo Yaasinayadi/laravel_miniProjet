@@ -8,8 +8,8 @@
 </div>
 
 <div class="card" style="margin-bottom: 20px;display: flex; justify-content: flex-start; align-items: center;">
-    <form action="{{ route('resources.index') }}" method="GET" style="display: flex; gap: 10px; align-items: center;">
-        <div style="width: 480px;">
+    <form action="{{ route('resources.index') }}" method="GET" style="width: 100%; display: flex; gap: 10px; align-items: center;">
+        <div style="width: 42%;">
             <select name="category_id" class="form-control" style="color : #ffffffff;padding: 8px; border: 1px solid #ffffffff; border-radius: 4px;">
                 <option style="color: #ffffffff;" value="">-- Toutes les catégories --</option>
                 @foreach($categories as $category)
@@ -19,7 +19,7 @@
                 @endforeach
             </select>
         </div>
-        <div style="width: 500px;">
+        <div style="width: 42%;">
             <select name="state" class="form-control" style="padding: 8px; border: 1px solid #ddd; color : #ffffffff;border-radius: 4px;">
                 <option value="">-- Tous les états --</option>
                 <option value="active" {{ request('state') == 'active' ? 'selected' : '' }}>Actif</option>
@@ -28,11 +28,13 @@
         </div>
         <div>
             <button type="submit" class="btn btn-primary" style="padding: 8px 25px; width:150px;margin-left: 10px;">Filtrer</button>
-            @if(request()->filled('category_id') || request()->filled('state'))
-                <a href="{{ route('resources.index') }}" style="color: #ffffffff; text-decoration: underline;">Réinitialiser</a>
-            @endif
-
         </div>
+        <div>
+            @if(request()->filled('category_id') || request()->filled('state'))
+                <a href="{{ route('resources.index') }}" class="btn btn-danger">Réinitialiser</a>
+            @endif
+        </div>
+
     </form>
 </div>
 

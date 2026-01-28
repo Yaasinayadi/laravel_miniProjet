@@ -42,15 +42,14 @@
                 </label>
             </div>
             
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-                <x-button class="ml-3">
+            <div class="mt-4" style="display: flex; align-items: center; gap: 2%;">
+                    <x-button class="ml-3">
                     {{ __('Login') }}
-                </x-button>
+                    </x-button>
+                    
+                    <x-button class="ml-3">
+                    <a href="/register" style="text-decoration: none;">register</a>
+                    </x-button>
             </div>
             
         </form>

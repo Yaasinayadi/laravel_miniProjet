@@ -53,6 +53,15 @@ class LoginRequest extends FormRequest
             ]);
         }
 
+        // Check if the user is banned (is_active = false)
+        if (! Auth::user()->is_active) {
+            Auth::logout();
+            
+            throw ValidationException::withMessages([
+                'email' => 'Votre compte a été désactivé. Veuillez contacter un administrateur.',
+            ]);
+        }
+
         RateLimiter::clear($this->throttleKey());
     }
 
